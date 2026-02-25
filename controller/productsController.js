@@ -1,5 +1,10 @@
 const productsController = require('../model/products');
 
+const errorResponse =(req,res)=>
+    {
+        res.status(404).json({message:'product not Found'});
+    };
+
 const getAllProducts =(req, res) =>{
     const products = productsController.getAllProducts();
     res.status(200).json(products);
@@ -36,6 +41,10 @@ const getProductsByID=(req,res)=>{
     const search = products.find(p=> p.id === productsID);
 
     res.status(200).json(search);
+
+    if(!search){
+        return errorResponse(req,res);
+    }
 };
 module.exports ={
     getAllProducts,
