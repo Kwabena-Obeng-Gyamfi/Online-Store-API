@@ -30,11 +30,19 @@ const getAllSports =(req, res) =>{
     res.status(200).json(sports);
 };
 
+const getProductsByID=(req,res)=>{
+    const productsID =parseInt(req.params.id);
+    const products = productsController.getAllProducts();
+    const search = products.find(p=> p.id === productsID);
+
+    res.status(200).json(search);
+};
 module.exports ={
     getAllProducts,
     getAllElectronics,
     getAllClothing,
     getAllBooks,
     getAllBeauty,
-    getAllSports
+    getAllSports,
+    getProductsByID
 };

@@ -10,6 +10,7 @@ router.get('/clothing',productRoutes.getAllClothing);
 router.get('/books',productRoutes.getAllBooks);
 router.get('/beauty',productRoutes.getAllBeauty);
 router.get('/sports',productRoutes.getAllSports);
+router.get('/products/:id',productRoutes.getProductsByID);
 
 
 module.exports = router;
