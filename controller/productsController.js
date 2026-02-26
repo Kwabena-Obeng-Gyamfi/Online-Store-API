@@ -74,14 +74,16 @@ const getProductByMaxPrice = (req,res)=>{
 const filterByStockStatus =(req,res)=>{
 // lets make our own parseBoolean function to convert string to boolean
 
-function parseBoolean (value){
-    if(value === 'true') return true;
-    if(value === 'false') return false;
-};
-	const stockStatus= parseBoolean(req.params.stock);
+function parseBoolean(value) {
+    if (typeof value !== 'string') return undefined;
+    if (value.toLowerCase() === 'true') return true;
+    if (value.toLowerCase() === 'false') return false;
+    return errorResponse(req,res);
+}
+	const stockStatus= req.params.stock;
 	const productStockStatus = productsController.getAllProducts();
 	
-	const status = productStockStatus.filter(p=> p.stock === stockStatus)
+	const status = productStockStatus.filter(p=> parseBoolean(p.stock) === stockStatus)
 
 	res.status(200).json(status);
 };
