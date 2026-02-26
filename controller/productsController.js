@@ -36,7 +36,7 @@ const getAllSports =(req, res) =>{
 };
 
 const getProductsByID=(req,res)=>{
-    const productsID =parseInt(req.params.id);
+    const productsID = parseInt(req.params.id);
     const products = productsController.getAllProducts();
     const search = products.find(p=> p.id === productsID);
 
@@ -46,6 +46,48 @@ const getProductsByID=(req,res)=>{
 
     else return res.status(200).json(search);
 };
+
+const getProductByMinPrice = (req,res)=>{
+
+	const productMinPrice= req.params.price;
+	const minPrice = productsController.getAllProducts();
+
+	const productPrice = minPrice.filter(m=>m.price >= productMinPrice )
+
+	res.status(200).json(productPrice);
+	
+	
+};
+
+const getProductByMaxPrice = (req,res)=>{
+
+	const productMaxPrice= req.params.price;
+	const maxPrice = productsController.getAllProducts();
+
+	const productPrice = maxPrice.filter(m=> m.price <= productMaxPrice );
+
+	res.status(200).json(productPrice);
+	
+	
+};
+
+const filterByStockStatus =(req,res)=>{
+// lets make our own parseBoolean function to convert string to boolean
+
+function parseBoolean (value){
+    if(value === 'true') return true;
+    if(value === 'false') return false;
+};
+	const stockStatus= parseBoolean(req.params.stock);
+	const productStockStatus = productsController.getAllProducts();
+	
+	const status = productStockStatus.filter(p=> p.stock === stockStatus)
+
+	res.status(200).json(status);
+};
+
+
+
 module.exports ={
     getAllProducts,
     getAllElectronics,
@@ -53,5 +95,8 @@ module.exports ={
     getAllBooks,
     getAllBeauty,
     getAllSports,
-    getProductsByID
+    getProductsByID,
+    getProductByMinPrice,
+    getProductByMaxPrice,
+    filterByStockStatus
 };

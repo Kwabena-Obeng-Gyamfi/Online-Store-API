@@ -11,6 +11,9 @@ router.get('/products/books',productRoutes.getAllBooks);
 router.get('/products/beauty',productRoutes.getAllBeauty);
 router.get('/products/sports',productRoutes.getAllSports);
 router.get('/products/:id',productRoutes.getProductsByID);
+router.get('/products/minPrice/:price',productRoutes.getProductByMinPrice);
+router.get('/products/maxPrice/:price',productRoutes.getProductByMaxPrice);
+router.get('/products/stock/:status',productRoutes.filterByStockStatus);
 
 
 module.exports = router;
