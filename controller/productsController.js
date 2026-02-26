@@ -40,11 +40,11 @@ const getProductsByID=(req,res)=>{
     const products = productsController.getAllProducts();
     const search = products.find(p=> p.id === productsID);
 
-    res.status(200).json(search);
-
     if(!search){
         return errorResponse(req,res);
     }
+
+    else return res.status(200).json(search);
 };
 module.exports ={
     getAllProducts,
