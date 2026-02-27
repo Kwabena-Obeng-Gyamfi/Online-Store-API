@@ -47,6 +47,66 @@ const getProductsByID=(req,res)=>{
     else return res.status(200).json(search);
 };
 
+const getElectronicsById =(req,res)=>{
+	const ID = parseInt(req.params.id);
+	const  electronicsID = productsController.getAllElectronics();
+	
+	const IdSearch = electronicsID.find(e=> e.id === ID)
+		
+		if(!IdSearch)
+		return errorResponse(req,res);
+		else return res.status(200).json(IdSearch);
+	
+};
+
+const getClothingById =(req,res)=>{
+	const ID = parseInt(req.params.id);
+	const  clothingID = productsController.getAllClothing();
+	
+	const IdSearch = clothingID.find(c=> c.id === ID)
+		
+		if(!IdSearch)
+		return errorResponse(req,res);
+		else return res.status(200).json(IdSearch);
+	
+};
+
+const getBooksById =(req,res)=>{
+	const ID = parseInt(req.params.id);
+	const  booksID = productsController.getAllBooks();
+	
+	const IdSearch = booksID.find(b=> b.id === ID)
+		
+		if(!IdSearch)
+		return errorResponse(req,res);
+		else return res.status(200).json(IdSearch);
+	
+};
+
+const getBeautyById =(req,res)=>{
+	const ID = parseInt(req.params.id);
+	const  beautyID = productsController.getAllBeauty();
+	
+	const IdSearch = beautyID.find(b=> b.id === ID)
+		
+		if(!IdSearch)
+		return errorResponse(req,res);
+		else return res.status(200).json(IdSearch);
+	
+};
+
+const getSportsById =(req,res)=>{
+	const ID = parseInt(req.params.id);
+	const  sportsID = productsController.getAllSports();
+	
+	const IdSearch = sportsID.find(s=> s.id === ID)
+		
+		if(!IdSearch)
+		return errorResponse(req,res);
+		else return res.status(200).json(IdSearch);
+	
+};
+
 const getProductByMinPrice = (req,res)=>{
 
 	const productMinPrice= req.params.price;
@@ -76,18 +136,24 @@ const filterByStockStatus =(req,res)=>{
 
 function parseBoolean(value) {
     if (typeof value !== 'string') return undefined;
-    if (value.toLowerCase() === 'true') return true;
-    if (value.toLowerCase() === 'false') return false;
-    return errorResponse(req,res);
+    const lowerValue = value.toLowerCase();
+    if (lowerValue === 'true') return true;
+    else if (lowerValue === 'false') return false;
+    else return errorResponse(req,res);
+    
 }
-	const stockStatus= req.params.stock;
+	const stockStatus= parseBoolean(req.params.stock);
 	const productStockStatus = productsController.getAllProducts();
 	
-	const status = productStockStatus.filter(p=> parseBoolean(p.stock) === stockStatus)
+	const status = productStockStatus.filter(p=>(p.stock) === stockStatus);
 
 	res.status(200).json(status);
 };
 
+const collaboration =(req,res)=>{
+    const mixParameters = filterByStockStatus() && getProductByMinPrice();
+    res.status(200).json(mixParameters);
+};
 
 
 module.exports ={
@@ -100,5 +166,11 @@ module.exports ={
     getProductsByID,
     getProductByMinPrice,
     getProductByMaxPrice,
-    filterByStockStatus
+    filterByStockStatus,
+    getElectronicsById,
+    getClothingById,
+    getBooksById,
+    getBeautyById,
+    getSportsById,
+    collaboration
 };
