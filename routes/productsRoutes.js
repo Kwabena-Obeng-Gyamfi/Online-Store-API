@@ -20,5 +20,11 @@ router.get('/products/books/:id',productRoutes.getBooksById);
 router.get('/products/beauty/:id',productRoutes.getBeautyById);
 router.get('/products/sports/:id',productRoutes.getSportsById);
 router.get('/products/collaboration/:stock/:price',productRoutes.collaboration);
+router.post('/postproducts', productRoutes.addNewProduct);
+router.post('/postelectronics', productRoutes.addNewElectronicProduct);
+router.post('/postclothing', productRoutes.addNewClothingProduct);
+router.post('/postbeauty', productRoutes.addNewBeautyProduct);
+router.post('/postsports', productRoutes.addNewSportsProduct);
+router.post('/postbooks', productRoutes.addNewBookProduct);
 
 module.exports = router;

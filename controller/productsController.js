@@ -5,6 +5,8 @@ const errorResponse =(req,res)=>
         res.status(404).json({message:'product not Found'});
     };
 
+
+// getting all products 
 const getAllProducts =(req, res) =>{
     const products = productsController.getAllProducts();
     res.status(200).json(products);
@@ -34,6 +36,9 @@ const getAllSports =(req, res) =>{
     const sports = productsController.getAllSports();
     res.status(200).json(sports);
 };
+
+
+//getting products by ID
 
 const getProductsByID=(req,res)=>{
     const productsID = parseInt(req.params.id);
@@ -155,6 +160,124 @@ const collaboration =(req,res)=>{
     res.status(200).json(mixParameters);
 };
 
+// working on post requests now 
+const addNewProduct =(req,res)=>{
+    const {name, category, price, stock} = req.body;
+
+    const newProduct = {
+        id:productsController.getAllProducts().length + 1, // auto-increment ID
+        name,
+        category,
+        price,
+        stock
+    };
+
+    productsController.getAllProducts().push(newProduct);
+
+    res.status(201).json({message: 'New product added successfully', data: newProduct});
+};
+
+
+const addNewElectronicProduct =(req,res)=>{
+
+const {name,price,category,stock}= req.body;
+
+const newProduct={  
+id: productsController.getAllElectronics().length+1,
+name,
+price,
+category,
+stock
+
+}
+
+productsController.getAllElectronics().push(newProduct);
+
+res.status(201).json({message: 'New product added successfully', data: newProduct});
+
+
+};
+
+const addNewClothingProduct =(req,res)=>{
+
+const {name,price,category,stock}= req.body;
+
+const newProduct={  
+id: productsController.getAllClothing().length+1,
+name,
+price,
+category,
+stock
+
+}
+
+productsController.getAllClothing().push(newProduct);
+
+res.status(201).json({message: 'New product added successfully', data: newProduct});
+
+
+};
+
+const addNewBeautyProduct =(req,res)=>{
+
+const {name,price,category,stock}= req.body;
+
+const newProduct={  
+id: productsController.getAllBeauty().length+1,
+name,
+price,
+category,
+stock
+
+}
+
+productsController.getAllBeauty().push(newProduct);
+
+res.status(201).json({message: 'New product added successfully', data: newProduct});
+
+
+};
+
+const addNewSportsProduct =(req,res)=>{
+
+const {name,price,category,stock}= req.body;
+
+const newProduct={  
+id: productsController.getAllSports().length+1,
+name,
+price,
+category,
+stock
+
+}
+
+productsController.getAllSports().push(newProduct);
+
+res.status(201).json({message: 'New product added successfully', data: newProduct});
+
+
+};
+
+const addNewBookProduct =(req,res)=>{
+
+const {name,price,category,stock}= req.body;
+
+const newProduct={  
+id: productsController.getAllBooks().length+1,
+name,
+price,
+category,
+stock
+
+}
+
+productsController.getAllBooks().push(newProduct);
+
+res.status(201).json({message: 'New product added successfully', data: newProduct});
+
+
+};
+
 
 module.exports ={
     getAllProducts,
@@ -172,5 +295,11 @@ module.exports ={
     getBooksById,
     getBeautyById,
     getSportsById,
-    collaboration
+    collaboration,
+    addNewProduct, 
+    addNewBeautyProduct,
+    addNewClothingProduct,  
+    addNewElectronicProduct,
+    addNewSportsProduct,
+    addNewBookProduct
 };
