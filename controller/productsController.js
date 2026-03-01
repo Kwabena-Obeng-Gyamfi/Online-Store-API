@@ -299,6 +299,83 @@ res.json({message:'product updated successfully', data: searchProduct});
 
 };
 
+const updateClothing =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const productId = productsController.getAllClothing();
+
+const searchId = productId.find(p=> p.id === ID); 
+
+const{name, price, category, stock}= req.body;
+
+searchId.name =name ?? searchId.name;
+searchId.price =price ?? searchId.price;
+searchId.category =category ?? searchId.category;
+searchId.stock =stock ?? searchId.stock;
+
+res.json({message:"product updated successfully", data: searchId});
+
+
+};
+
+const updateBooks =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const productId = productsController.getAllBooks();
+
+const searchId = productId.find(p=> p.id === ID); 
+
+const{name, price, category, stock}= req.body;
+
+searchId.name =name ?? searchId.name;
+searchId.price =price ?? searchId.price;
+searchId.category =category ?? searchId.category;
+searchId.stock =stock ?? searchId.stock;
+
+res.json({message:"product updated successfully", data: searchId});
+
+
+};
+
+const updateBeauty =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const productId = productsController.getAllBeauty();
+
+const searchId = productId.find(p=> p.id === ID); 
+
+const{name, price, category, stock}= req.body;
+
+searchId.name =name ?? searchId.name;
+searchId.price =price ?? searchId.price;
+searchId.category =category ?? searchId.category;
+searchId.stock =stock ?? searchId.stock;
+
+res.json({message:"product updated successfully", data: searchId});
+
+
+};
+
+const updateSports =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const productId = productsController.getAllSports();
+
+const searchId = productId.find(p=> p.id === ID); 
+
+const{name, price, category, stock}= req.body;
+
+searchId.name =name ?? searchId.name;
+searchId.price =price ?? searchId.price;
+searchId.category =category ?? searchId.category;
+searchId.stock =stock ?? searchId.stock;
+
+res.json({message:"product updated successfully", data: searchId});
+
+
+};
+
+
 module.exports ={
     getAllProducts,
     getAllElectronics,
@@ -322,5 +399,9 @@ module.exports ={
     addNewElectronicProduct,
     addNewSportsProduct,
     addNewBookProduct,
-    updateElectronics
+    updateElectronics,
+    updateClothing,
+    updateBooks,
+    updateBeauty,
+    updateSports
 };
