@@ -140,3 +140,140 @@ Valid and invalid IDs
 Query filters
 
 Incorrect routes (should return 404)
+
+----ADVANCED 
+The 4 Core HTTP Methods (CRUD)
+
+CRUD = Create, Read, Update, Delete
+
+Operation	HTTP Method	What It Does
+Create	POST	Add new product
+Read	GET	Get products
+Update	PUT / PATCH	Edit product
+Delete	DELETE	Remove product
+
+You already have:
+
+✔ GET
+✔ POST
+
+Now you need:
+
+👉 PUT / PATCH
+👉 DELETE
+
+🛠 1️⃣ UPDATE (PUT or PATCH)
+
+Used to edit a product.
+
+Example:
+
+PUT /api/products/3
+Example Code
+router.put('/products/:id', (req, res) => {
+
+    const id = parseInt(req.params.id);
+    const product = products.find(p => p.id === id);
+
+    if (!product) {
+        return res.status(404).json({ message: "Product not found" });
+    }
+
+    const { name, price, category, stock } = req.body;
+
+    product.name = name ?? product.name;
+    product.price = price ?? product.price;
+    product.category = category ?? product.category;
+    product.stock = stock ?? product.stock;
+
+    res.json({ message: "Product updated", data: product });
+});
+PUT vs PATCH
+
+PUT → Replace full object
+
+PATCH → Update only some fields
+
+Most APIs use PATCH for partial updates.
+
+🗑 2️⃣ DELETE
+
+Used to remove product.
+
+DELETE /api/products/3
+Example Code
+router.delete('/products/:id', (req, res) => {
+
+    const id = parseInt(req.params.id);
+    const index = products.findIndex(p => p.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({ message: "Product not found" });
+    }
+
+    products.splice(index, 1);
+
+    res.json({ message: "Product deleted successfully" });
+});
+🧠 Now Your API Has Full CRUD
+
+For products:
+
+GET     /products
+GET     /products/:id
+POST    /products
+PUT     /products/:id
+DELETE  /products/:id
+
+That’s a real REST API.
+
+🛒 But This Is an ONLINE STORE
+
+Products alone aren’t enough.
+
+Here’s what a real store API needs:
+
+🚀 Next Level Features
+1️⃣ Categories Endpoint
+GET /categories
+GET /categories/:name/products
+2️⃣ Users Endpoint
+POST /users (register)
+POST /login (authentication later)
+GET /users/:id
+3️⃣ Cart System
+POST /cart
+GET /cart/:userId
+DELETE /cart/:itemId
+4️⃣ Orders
+POST /orders
+GET /orders/:userId
+5️⃣ Filtering & Searching
+
+You already started this 👍
+
+Better approach:
+
+GET /products?stock=true&minPrice=500&category=Electronics
+
+Instead of:
+
+/products/true/500
+
+Query parameters are cleaner.
+
+🧱 Middleware You Should Add
+
+As your API grows:
+
+1️⃣ Validation middleware
+
+Check required fields.
+
+2️⃣ Error handling middleware
+
+Centralize errors.
+
+3️⃣ Logging middleware
+
+See requests in console.
