@@ -26,5 +26,6 @@ router.post('/postclothing', productRoutes.addNewClothingProduct);
 router.post('/postbeauty', productRoutes.addNewBeautyProduct);
 router.post('/postsports', productRoutes.addNewSportsProduct);
 router.post('/postbooks', productRoutes.addNewBookProduct);
+router.put('/updateElectronics/:id', productRoutes.updateElectronics);
 
 module.exports = router;

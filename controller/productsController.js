@@ -279,6 +279,26 @@ res.status(201).json({message: 'New product added successfully', data: newProduc
 };
 
 
+// lets make put resquest, find product, deconstruct , fallback value rule if new value null use old value
+//object.feild = new value ?? object.feild
+
+const updateElectronics=(req,res)=>{
+
+const productId = parseInt(req.params.id);
+const searchProduct = productsController.getAllElectronics().find(e=> e.id === productId);
+
+const {name,price,category,stock}=req.body;
+
+searchProduct.name = name ?? searchProduct.name;
+searchProduct.price = price ?? searchProduct.price;
+searchProduct.category = category ?? searchProduct.category;
+searchProduct.stock = stock ?? searchProduct.stock;
+
+res.json({message:'product updated successfully', data: searchProduct});
+
+
+};
+
 module.exports ={
     getAllProducts,
     getAllElectronics,
@@ -301,5 +321,6 @@ module.exports ={
     addNewClothingProduct,  
     addNewElectronicProduct,
     addNewSportsProduct,
-    addNewBookProduct
+    addNewBookProduct,
+    updateElectronics
 };
