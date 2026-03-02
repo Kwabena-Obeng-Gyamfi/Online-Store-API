@@ -20,12 +20,27 @@ router.get('/products/books/:id',productRoutes.getBooksById);
 router.get('/products/beauty/:id',productRoutes.getBeautyById);
 router.get('/products/sports/:id',productRoutes.getSportsById);
 router.get('/products/collaboration/:stock/:price',productRoutes.collaboration);
+
+//post requests
 router.post('/postproducts', productRoutes.addNewProduct);
 router.post('/postelectronics', productRoutes.addNewElectronicProduct);
 router.post('/postclothing', productRoutes.addNewClothingProduct);
 router.post('/postbeauty', productRoutes.addNewBeautyProduct);
 router.post('/postsports', productRoutes.addNewSportsProduct);
 router.post('/postbooks', productRoutes.addNewBookProduct);
+
+//put requests for updating products
 router.put('/updateElectronics/:id', productRoutes.updateElectronics);
+router.put('/updateClothing/:id', productRoutes.updateClothing);
+router.put('/updateBooks/:id', productRoutes.updateBooks);
+router.put('/updateBeauty/:id', productRoutes.updateBeauty);
+router.put('/updateSports/:id', productRoutes.updateSports);
+
+//delete requests for deleting products
+router.delete('/deleteElectronics/:id', productRoutes.deleteElectronics);
+router.delete('/deleteClothing/:id', productRoutes.deleteClothing);
+router.delete('/deleteBooks/:id', productRoutes.deleteBooks);
+router.delete('/deleteBeauty/:id', productRoutes.deleteBeauty);
+router.delete('/deleteSports/:id', productRoutes.deleteSports);
 
 module.exports = router;

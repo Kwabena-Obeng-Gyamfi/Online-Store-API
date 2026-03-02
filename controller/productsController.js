@@ -375,6 +375,27 @@ res.json({message:"product updated successfully", data: searchId});
 
 };
 
+//delete requests for deleting products
+const deleteBeautyProduct =(req,res)=>{
+
+const {name,price,category,stock}= req.body;
+
+const newProduct={  
+id: productsController.getAllBeauty().length+1,
+name,
+price,
+category,
+stock
+
+}
+
+productsController.getAllBeauty().splice(newProduct);
+
+res.status(201).json({message: 'New product removed successfully', data: newProduct});
+
+
+};
+
 
 module.exports ={
     getAllProducts,
