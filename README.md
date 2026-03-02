@@ -80,7 +80,7 @@ GET /products/:id
 Search through all products
 
 Return the product if found
-
+new
 Return an error message if not found
 
 Test:
