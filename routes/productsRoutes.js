@@ -37,10 +37,10 @@ router.put('/updateBeauty/:id', productRoutes.updateBeauty);
 router.put('/updateSports/:id', productRoutes.updateSports);
 
 //delete requests for deleting products
-router.delete('/deleteElectronics/:id', productRoutes.deleteElectronics);
-router.delete('/deleteClothing/:id', productRoutes.deleteClothing);
-router.delete('/deleteBooks/:id', productRoutes.deleteBooks);
-router.delete('/deleteBeauty/:id', productRoutes.deleteBeauty);
-router.delete('/deleteSports/:id', productRoutes.deleteSports);
+router.delete('/deleteElectronics/:id', productRoutes.deleteElectronicsProduct);
+router.delete('/deleteClothing/:id', productRoutes.deleteClothingProduct);
+router.delete('/deleteBooks/:id', productRoutes.deleteBooksProduct);
+router.delete('/deleteBeauty/:id', productRoutes.deleteBeautyProduct);
+router.delete('/deleteSports/:id', productRoutes.deleteSportsProduct);
 
 module.exports = router;

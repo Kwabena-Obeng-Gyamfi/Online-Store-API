@@ -377,21 +377,55 @@ res.json({message:"product updated successfully", data: searchId});
 
 //delete requests for deleting products
 const deleteBeautyProduct =(req,res)=>{
+const ID = parseInt(req.params.id);
 
-const {name,price,category,stock}= req.body;
+const searchId = productsController.getAllBeauty().find(p=> p.id ===ID);
 
-const newProduct={  
-id: productsController.getAllBeauty().length+1,
-name,
-price,
-category,
-stock
+productsController.getAllBeauty().splice(searchId,1);
 
-}
+res.status(201).json({message: 'Product removed successfully', data: searchId});
 
-productsController.getAllBeauty().splice(newProduct);
 
-res.status(201).json({message: 'New product removed successfully', data: newProduct});
+};
+
+const deleteClothingProduct =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const searchId = productsController.getAllClothing().find(p=> p.id ===ID);
+
+productsController.getAllClothing().splice(searchId,1);
+
+res.status(201).json({message: 'Product removed successfully', data: searchId});
+
+
+};const deleteElectronicsProduct =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const searchId = productsController.getAllElectronics().find(p=> p.id ===ID);
+
+productsController.getAllElectronics().splice(searchId,1);
+
+res.status(201).json({message: 'Product removed successfully', data: searchId});
+
+
+};const deleteBooksProduct =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const searchId = productsController.getAllBooks().find(p=> p.id ===ID);
+
+productsController.getAllBooks().splice(searchId,1);
+
+res.status(201).json({message: 'Product removed successfully', data: searchId});
+
+
+};const deleteSportsProduct =(req,res)=>{
+const ID = parseInt(req.params.id);
+
+const searchId = productsController.getAllSports().find(p=> p.id ===ID);
+
+productsController.getAllSports().splice(searchId,1);
+
+res.status(201).json({message: 'Product removed successfully', data: searchId});
 
 
 };
@@ -424,5 +458,10 @@ module.exports ={
     updateClothing,
     updateBooks,
     updateBeauty,
-    updateSports
+    updateSports,
+    deleteBeautyProduct,
+    deleteClothingProduct,
+    deleteElectronicsProduct,
+    deleteBooksProduct,
+    deleteSportsProduct
 };
