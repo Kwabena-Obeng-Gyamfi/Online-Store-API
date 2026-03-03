@@ -1,6 +1,7 @@
 const express = require('express');
 
 const productRoutes= require('../controller/productsController');
+const userRoutes = require('../controller/userController');
 
 const router = express.Router();
 
@@ -20,6 +21,7 @@ router.get('/products/books/:id',productRoutes.getBooksById);
 router.get('/products/beauty/:id',productRoutes.getBeautyById);
 router.get('/products/sports/:id',productRoutes.getSportsById);
 router.get('/products/collaboration/:stock/:price',productRoutes.collaboration);
+router.get('/products/categories/:category', productRoutes.getProductsByCategory)
 
 //post requests
 router.post('/postproducts', productRoutes.addNewProduct);
@@ -28,6 +30,8 @@ router.post('/postclothing', productRoutes.addNewClothingProduct);
 router.post('/postbeauty', productRoutes.addNewBeautyProduct);
 router.post('/postsports', productRoutes.addNewSportsProduct);
 router.post('/postbooks', productRoutes.addNewBookProduct);
+//user post routes 
+router.post('/addUser',userRoutes.addNewUser)
 
 //put requests for updating products
 router.put('/updateElectronics/:id', productRoutes.updateElectronics);

@@ -161,6 +161,19 @@ const collaboration =(req,res)=>{
 };
 
 
+//get products by category
+const getProductsByCategory= (req,res)=>{
+
+    const productCategory = req.params.category;
+    const categoryId = productsController.getAllProducts();
+
+    const searchCategory = categoryId.filter(c=> c.category === productCategory);
+
+    res.status(200).json({message: "product found", data: searchCategory});
+
+};
+
+
 
 
 // working on post requests now 
@@ -456,6 +469,7 @@ module.exports ={
     getBeautyById,
     getSportsById,
     collaboration,
+    getProductsByCategory,
     addNewProduct, 
     addNewBeautyProduct,
     addNewClothingProduct,  
@@ -471,5 +485,6 @@ module.exports ={
     deleteClothingProduct,
     deleteElectronicsProduct,
     deleteBooksProduct,
-    deleteSportsProduct
+    deleteSportsProduct,
+
 };
