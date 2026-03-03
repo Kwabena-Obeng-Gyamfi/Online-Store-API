@@ -160,6 +160,9 @@ const collaboration =(req,res)=>{
     res.status(200).json(mixParameters);
 };
 
+
+
+
 // working on post requests now 
 const addNewProduct =(req,res)=>{
     const {name, category, price, stock} = req.body;
@@ -279,6 +282,8 @@ res.status(201).json({message: 'New product added successfully', data: newProduc
 };
 
 
+
+
 // lets make put resquest, find product, deconstruct , fallback value rule if new value null use old value
 //object.feild = new value ?? object.feild
 
@@ -374,6 +379,9 @@ res.json({message:"product updated successfully", data: searchId});
 
 
 };
+
+
+
 
 //delete requests for deleting products
 const deleteBeautyProduct =(req,res)=>{
