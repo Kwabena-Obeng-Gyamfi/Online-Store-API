@@ -233,6 +233,7 @@ Products alone aren’t enough.
 
 Here’s what a real store API needs:
 //all
+// new 
 🚀 Next Level Features
 1️⃣ Categories Endpoint
 GET /categories
