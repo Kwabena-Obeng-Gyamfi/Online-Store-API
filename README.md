@@ -232,7 +232,7 @@ That’s a real REST API.
 Products alone aren’t enough.
 
 Here’s what a real store API needs:
-
+//all
 🚀 Next Level Features
 1️⃣ Categories Endpoint
 GET /categories
